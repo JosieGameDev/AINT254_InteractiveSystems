@@ -24,15 +24,25 @@ public class WallkToLettuce : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (goalTransform == null)
+
+        if (changeMoveToTarget() == null)
         {
+            animator.SetInteger("TortoiseStateNumber", 1);
+        }
+        else
+        {
+            if (goalTransform == null)
+            {
+
+                goalTransform = changeMoveToTarget().transform;
+            }
+            if (goalTransform != null && Vector3.Distance(tortoiseTransform.position, goalTransform.position) >= safeDistance)
+            {
+                tortoiseTransform.position = Vector3.MoveTowards(tortoiseTransform.position, goalTransform.position, speed * Time.deltaTime);
+                tortoiseTransform.LookAt(goalTransform);
+            }
             goalTransform = changeMoveToTarget().transform;
         }
-        if (goalTransform != null && Vector3.Distance(tortoiseTransform.position, goalTransform.position) >= safeDistance)
-        {
-            tortoiseTransform.position = Vector3.MoveTowards(tortoiseTransform.position, goalTransform.position, speed * Time.deltaTime);
-        }
-        goalTransform = changeMoveToTarget().transform;
 
     }
 
