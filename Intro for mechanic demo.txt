@@ -1,9 +1,10 @@
-HI!
-Aim of the game is to keep the letuce (big green circle in middle) safe from the oncoming tortoise (cubes) as long as possible
-Move player with WASD
-Click on tortoise when close enough to flip them over - will pause them until another one saves them
-Right click on a spot to spawn in decoy food to distract tortoise
+			HI!
 
-In full game the game will end when lettuce is destroyed
+				-Aim of the game is to keep the letuce (big green circle in middle) safe from the oncoming tortoise (cubes) as long as possible
+				-Move player with WASD
+				-Click on tortoise when close enough to flip them over - will pause them until another one saves them
+				-Right click on a spot to spawn in decoy food to distract tortoise
 
-THANKS
+			In full game the game will end when lettuce is destroyed
+
+			THANKS
