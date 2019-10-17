@@ -13,18 +13,25 @@ public class TortoiseStateChange : MonoBehaviour
     public GameObject foodBeingEaten;
     public GameObject spawnedDecoy;
     public int zAdjustment = 10;
+    
+    private GameObject player;
+    private PlayerActions playerAction;
 
+    public float playerFlipRange = 5;
     // Start is called before the first frame update
     void Start()
     {
         tortoise = this.gameObject;
         tortoiseAnimator = this.GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerAction = player.GetComponent<PlayerActions>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //throwDecoy(spawnedDecoy);
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerAction = player.GetComponent<PlayerActions>();
     }
 
     private void OnMouseOver()
@@ -33,32 +40,21 @@ public class TortoiseStateChange : MonoBehaviour
 
         if(Input.GetMouseButton(0) && tortoiseAnimator.GetInteger("TortoiseStateNumber") != 3)
         {
+            if(Vector3.Distance(player.transform.position, tortoise.transform.position) <= playerFlipRange)
+            { 
+                if (playerAction.nextFlipTime <= Time.time)
+                {
+                    previousState = tortoiseAnimator.GetInteger("TortoiseStateNumber");
+                    tortoiseAnimator.SetInteger("TortoiseStateNumber", 3);
+                    playerAction.nextFlipTime = Time.time + playerAction.flipTime;
+                }
+            }
             
-            previousState = tortoiseAnimator.GetInteger("TortoiseStateNumber");
-            tortoiseAnimator.SetInteger("TortoiseStateNumber", 3);
             //Invoke("resetTortoiseState", pauseTime);
         }
         
     }
 
-    //private void throwDecoy(GameObject SpawnedObject)
-    //{
-    //    // SCRIPT TO THROW DECOY VEG ONTO FLOOR
-
-    //    if (Input.GetMouseButton(1))
-    //    {
-    //        // on right click
-
-    //        Vector3 ClickPoint = Input.mousePosition;
-    //        ClickPoint.z = zAdjustment;
-    //        ClickPoint = Camera.main.ScreenToWorldPoint(ClickPoint);
-    //        Debug.Log(ClickPoint);
-    //        ClickPoint.y = 1;
-    //        Debug.Log(ClickPoint);
-
-    //        Instantiate(SpawnedObject, ClickPoint, Quaternion.identity);
-    //    }
-    //}
 
     private void resetTortoiseState()
     {

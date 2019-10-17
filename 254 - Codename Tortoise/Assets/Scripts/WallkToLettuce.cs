@@ -9,7 +9,7 @@ public class WallkToLettuce : StateMachineBehaviour
     #region
     public Transform goalTransform;
     public Transform tortoiseTransform;
-    public float speed = 0.1f;
+    public float speed;
     public float safeDistance = 2f;
 
     #endregion
@@ -19,6 +19,7 @@ public class WallkToLettuce : StateMachineBehaviour
     {
         tortoiseTransform = animator.GetComponent<Transform>();
         goalTransform = changeMoveToTarget().transform;
+        speed = Random.Range(.1f, 1f);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

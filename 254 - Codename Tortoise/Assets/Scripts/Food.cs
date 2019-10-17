@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Food : MonoBehaviour
 {
@@ -8,7 +9,10 @@ public class Food : MonoBehaviour
     // vars
     public int health = 5;
     public GameObject food;
-    public float damageRechargeTime = 2f;
+    public float damageRechargeTime = .5f;
+    public Text lettuceHealthLabel;
+    public Image gameOverPanel;
+    public GameObject Timer;
 
     private IEnumerator doDamageCoroutine;
 
@@ -16,18 +20,24 @@ public class Food : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        food = this.gameObject;
+
+        if (food.name == "LettucePatch")
+        {
+            lettuceHealthLabel.text = health.ToString();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-       
 
         if (health <= 0)
         {
             Destroy(this.gameObject);
-            
+            lettuceHealthLabel.text = "No more lettuce left :(";
+            Timer.GetComponent<Timer>().timerIsActive = false;
+
         }
     }
 
@@ -60,13 +70,24 @@ public class Food : MonoBehaviour
         
         while(true)
         {
-            yield return new WaitForSeconds(damageRechargeTime);
+            
             health--;
+            //Debug.Log(health + collidingObject.name);
+            
+            if (food.name == "LettucePatch")
+            {
+                lettuceHealthLabel.text = health.ToString();
+            }
             if (health <= 0)
             {
                 foodDie(collidingObject);
             }
-            Debug.Log(health + collidingObject.name);
+            if(food.name == "LettucePatch" && health <= 0)
+            {
+                lettuceHealthLabel.text = "No more lettuce left :(";
+            }
+            //Debug.Log(health + collidingObject.name);
+            yield return new WaitForSeconds(damageRechargeTime);
         }
         
     }

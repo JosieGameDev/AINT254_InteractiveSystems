@@ -8,8 +8,13 @@ public class PlayerActions : MonoBehaviour
     // vars
     public GameObject spawnedDecoy;
     public int zAdjustment = 10;
-    private float nextFireTime = 0f;
-    private float fireRate = 1f;
+    private float nextSpawnTime = 0f;
+    private float spawnRate = 3f;
+
+    public float nextFlipTime = 0f;
+    public float flipTime = 3f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,13 +26,6 @@ public class PlayerActions : MonoBehaviour
     {
         throwDecoy(spawnedDecoy);
 
-        if(Time.time - fireRate > nextFireTime)
-        {
-            if(nextFireTime < Time.time)
-            {
-                throwDecoy(spawnedDecoy);
-            }
-        }
     }
 
     private void throwDecoy(GameObject SpawnedObject)
@@ -36,7 +34,7 @@ public class PlayerActions : MonoBehaviour
 
         if (Input.GetMouseButton(1))
         {
-            if (nextFireTime <= Time.time)
+            if (nextSpawnTime <= Time.time)
             {
                 // on right click
 
@@ -48,7 +46,7 @@ public class PlayerActions : MonoBehaviour
                 Debug.Log(ClickPoint);
 
                 Instantiate(SpawnedObject, ClickPoint, Quaternion.identity);
-                nextFireTime = Time.time + fireRate;
+                nextSpawnTime = Time.time + spawnRate;
             }
         }
     }
