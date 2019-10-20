@@ -18,22 +18,29 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timerIsActive)
+        Debug.Log(timerIsActive);
+        if (timerIsActive == true)
         {
             timeLeft -= Time.deltaTime;
             //Debug.Log(timeLeft);
             if (timeLeft <= 0)
             {
-                //gameover
+                setTimerBool(false);
+                timeLeft = 0.0000f;
 
             }
 
             //update text label
             timerLabel.text = timeLeft.ToString();
         }
-        else if(!timerIsActive)
+        else if(timerIsActive == false)
         {
             timerLabel.color = (Color.red);
         }
+    }
+
+    public void setTimerBool(bool input)
+    {
+        timerIsActive = input;
     }
 }

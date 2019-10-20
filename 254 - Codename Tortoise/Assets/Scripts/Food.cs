@@ -7,12 +7,15 @@ public class Food : MonoBehaviour
 {
 
     // vars
-    public int health = 5;
+    public int startHealth = 5;
+    private int health;
+    static int healthPercentage = 100;
+    private int percentMultiplier;
     public GameObject food;
     public float damageRechargeTime = .5f;
     public Text lettuceHealthLabel;
     public Image gameOverPanel;
-    public GameObject Timer;
+    public GameObject TimerGO;
 
     private IEnumerator doDamageCoroutine;
 
@@ -21,10 +24,14 @@ public class Food : MonoBehaviour
     void Start()
     {
         food = this.gameObject;
+        health = startHealth;
+
+        percentMultiplier = 100/startHealth;
 
         if (food.name == "LettucePatch")
         {
-            lettuceHealthLabel.text = health.ToString();
+            //lettuceHealthLabel.text = health.ToString();
+            lettuceHealthLabel.text = getHealthPercentage();
         }
     }
 
@@ -34,9 +41,10 @@ public class Food : MonoBehaviour
 
         if (health <= 0)
         {
+            TimerGO.GetComponent<Timer>().setTimerBool(false);
             Destroy(this.gameObject);
-            lettuceHealthLabel.text = "No more lettuce left :(";
-            Timer.GetComponent<Timer>().timerIsActive = false;
+            lettuceHealthLabel.text = "0% : No more lettuce left :(";
+            
 
         }
     }
@@ -45,6 +53,7 @@ public class Food : MonoBehaviour
     {
         if(collision.gameObject.tag == "tortoise")
         {
+            
             collision.gameObject.GetComponent<Animator>().SetInteger("TortoiseStateNumber", 2);
             doDamageCoroutine = takeDamage(collision.gameObject);
             StartCoroutine(doDamageCoroutine);
@@ -61,7 +70,13 @@ public class Food : MonoBehaviour
         }
     }
 
-
+    public string getHealthPercentage()
+    {
+        //Debug.Log("health= " + health + " percentage mod = " + percentMultiplier);
+        healthPercentage = health * percentMultiplier;
+        string healthPercentOutput = healthPercentage.ToString() + "%";
+        return healthPercentOutput;
+    }
 
 
 
@@ -74,16 +89,20 @@ public class Food : MonoBehaviour
             health--;
             //Debug.Log(health + collidingObject.name);
             
+            
             if (food.name == "LettucePatch")
             {
-                lettuceHealthLabel.text = health.ToString();
+                //lettuceHealthLabel.text = health.ToString();
+                lettuceHealthLabel.text = getHealthPercentage();
             }
             if (health <= 0)
             {
+                
                 foodDie(collidingObject);
             }
             if(food.name == "LettucePatch" && health <= 0)
             {
+                TimerGO.GetComponent<Timer>().setTimerBool(false);
                 lettuceHealthLabel.text = "No more lettuce left :(";
             }
             //Debug.Log(health + collidingObject.name);

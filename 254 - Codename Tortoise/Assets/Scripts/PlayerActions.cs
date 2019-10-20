@@ -38,12 +38,17 @@ public class PlayerActions : MonoBehaviour
             {
                 // on right click
 
-                Vector3 ClickPoint = Input.mousePosition;
-                ClickPoint.z = zAdjustment;
-                ClickPoint = Camera.main.ScreenToWorldPoint(ClickPoint);
-                Debug.Log(ClickPoint);
-                ClickPoint.y = 1;
-                Debug.Log(ClickPoint);
+                //spawn at click point
+                //Vector3 ClickPoint = Input.mousePosition;
+                //ClickPoint.z = zAdjustment;
+                //ClickPoint = Camera.main.ScreenToWorldPoint(ClickPoint);
+                //Debug.Log(ClickPoint);
+                //ClickPoint.y = 1;
+                //Debug.Log(ClickPoint);
+
+                //spawn behind player
+                Vector3 ClickPoint = this.gameObject.transform.position;
+                ClickPoint.x += 2;
 
                 Instantiate(SpawnedObject, ClickPoint, Quaternion.identity);
                 nextSpawnTime = Time.time + spawnRate;
