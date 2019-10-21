@@ -16,6 +16,7 @@ public class Food : MonoBehaviour
     public Text lettuceHealthLabel;
     public Image gameOverPanel;
     public GameObject TimerGO;
+    public GameManager GameManagerGO;
 
     private IEnumerator doDamageCoroutine;
 
@@ -39,16 +40,24 @@ public class Food : MonoBehaviour
     void Update()
     {
 
-        if (health <= 0)
-        {
-            TimerGO.GetComponent<Timer>().setTimerBool(false);
-            Destroy(this.gameObject);
-            lettuceHealthLabel.text = "0% : No more lettuce left :(";
+        //if (health <= 0 && food.name == "LettucePatch")
+        //{
+        //    GameManagerGO.StartGame();
+        //    TimerGO.GetComponent<Timer>().setTimerBool(false);
+            
+        //    Destroy(this.gameObject);
+        //    lettuceHealthLabel.text = "0% : No more lettuce left :(";
+            
             
 
-        }
+        //}
+        //if(health <= 0)
+        //{
+        //    Destroy(this.gameObject);
+        //}
     }
 
+    
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "tortoise")
@@ -104,6 +113,9 @@ public class Food : MonoBehaviour
             {
                 TimerGO.GetComponent<Timer>().setTimerBool(false);
                 lettuceHealthLabel.text = "No more lettuce left :(";
+                GlobalObject.Instance.timeRemaining = TimerGO.GetComponent<Timer>().timeLeft;
+                //GameManagerGO.StartGame();
+                GameManagerGO.endScreenLose();
             }
             //Debug.Log(health + collidingObject.name);
             yield return new WaitForSeconds(damageRechargeTime);

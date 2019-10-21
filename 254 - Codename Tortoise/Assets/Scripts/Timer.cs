@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class Timer : MonoBehaviour
 {
+    
     public float timeLeft = 30f;
     public Text timerLabel;
     public bool timerIsActive = true;
+    public GameManager GM;
+    public Food lettucePatch;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +23,7 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(timerIsActive);
+        //Debug.Log(timerIsActive);
         if (timerIsActive == true)
         {
             timeLeft -= Time.deltaTime;
@@ -27,7 +32,8 @@ public class Timer : MonoBehaviour
             {
                 setTimerBool(false);
                 timeLeft = 0.0000f;
-
+                GlobalObject.Instance.healthLeft = lettucePatch.getHealthPercentage();
+                GM.endScreenWin();
             }
 
             //update text label
@@ -42,5 +48,10 @@ public class Timer : MonoBehaviour
     public void setTimerBool(bool input)
     {
         timerIsActive = input;
+    }
+
+    public void endGame()
+    {
+        GM.StartGame();
     }
 }

@@ -18,7 +18,7 @@ public class WallkToLettuce : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         tortoiseTransform = animator.GetComponent<Transform>();
-        goalTransform = changeMoveToTarget().transform;
+        if (changeMoveToTarget().transform != null) goalTransform = changeMoveToTarget().transform;
         speed = Random.Range(.1f, 1f);
     }
 

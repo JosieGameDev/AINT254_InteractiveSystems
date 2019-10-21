@@ -66,14 +66,14 @@ public class TortoiseStateChange : MonoBehaviour
     {
         if (collision.gameObject.tag == "tortoise")
         {
-            Debug.Log("registering tortoise collision");
+            //Debug.Log("registering tortoise collision");
             tortoiseAnimator.SetInteger("TortoiseStateNumber", 1);
             collision.gameObject.GetComponent<Animator>().SetInteger("TortoiseStateNumber", 4);
             collision.gameObject.GetComponent<Animator>().SetInteger("TortoiseStateNumber", 1);
         }
         if (collision.gameObject.GetComponent<Food>() != null)
         {
-            Debug.Log("is colliding wi something with food script");
+            //Debug.Log("is colliding wi something with food script");
             foodBeingEaten = collision.gameObject;
         }
 
