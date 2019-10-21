@@ -7,7 +7,7 @@ public class GlobalObject : MonoBehaviour
     //this
     public static GlobalObject Instance;
     //vars
-    public string healthLeft;
+    public float healthLeft;
     public float timeRemaining;
 
     private void Awake()

@@ -32,7 +32,7 @@ public class Timer : MonoBehaviour
             {
                 setTimerBool(false);
                 timeLeft = 0.0000f;
-                GlobalObject.Instance.healthLeft = lettucePatch.getHealthPercentage();
+                GlobalObject.Instance.healthLeft = lettucePatch.getHealthPercentInt();
                 GM.endScreenWin();
             }
 
@@ -54,4 +54,6 @@ public class Timer : MonoBehaviour
     {
         GM.StartGame();
     }
+
+    
 }

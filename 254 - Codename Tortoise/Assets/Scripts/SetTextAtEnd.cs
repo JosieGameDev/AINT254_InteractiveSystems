@@ -10,6 +10,7 @@ public class SetTextAtEnd : MonoBehaviour
     private GlobalObject GO;
     public bool displayTime = false;
     public bool displayHealth = true;
+    //public string starRating;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class SetTextAtEnd : MonoBehaviour
         }
         else if(displayHealth == true)
         {
-            TextToSet.text = "Your lettuce survived! Well, " + GO.healthLeft + " of it survived, at least";
+            TextToSet.text = "Your lettuce survived! Well, " + GO.healthLeft + " of it survived, at least" + getStarRating();
         }
     }
 
@@ -30,5 +31,25 @@ public class SetTextAtEnd : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public string getStarRating()
+    {
+        string starRating;
+
+        if(GO.healthLeft >= 70)
+        {
+            starRating = "***";
+        }
+        else if (GO.healthLeft >=40)
+        {
+            starRating = "**";
+        }
+        else
+        {
+            starRating = "*";
+        }
+
+        return starRating;
     }
 }

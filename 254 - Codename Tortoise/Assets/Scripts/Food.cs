@@ -87,6 +87,12 @@ public class Food : MonoBehaviour
         return healthPercentOutput;
     }
 
+    public int getHealthPercentInt()
+    {
+        healthPercentage = health * percentMultiplier;
+        int healthPercentOutput = healthPercentage;
+        return healthPercentOutput;
+    }
 
 
     private IEnumerator takeDamage(GameObject collidingObject)
