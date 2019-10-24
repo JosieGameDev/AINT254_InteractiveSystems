@@ -186,6 +186,73 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &397671359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 397671361}
+  - component: {fileID: 397671360}
+  - component: {fileID: 397671362}
+  m_Layer: 0
+  m_Name: TortoiseSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &397671360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397671359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4882820818e1b57439b46c05169df08d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tortoisePrefab: {fileID: 3679714958970661110, guid: 6045c7eeb8f836c49b79964c2f216afd,
+    type: 3}
+  spawnRate: 3
+  maxTortoiseInScene: 10
+--- !u!4 &397671361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397671359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.89, y: 0.15, z: -14.33}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &397671362
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397671359}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 94c422f9151385b4e9ed70e34e7b1acb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &434697756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,11 +1115,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 402d1d1f50683e144bdc9203f07da22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLeft: 13
+  timeLeft: 20
   timerLabel: {fileID: 2088373278}
   timerIsActive: 1
   GM: {fileID: 6360314387418425786}
   lettucePatch: {fileID: 608730795}
+  timerCountsDown: 1
+  currentTime: 0
+  startTime: 0
 --- !u!4 &1842168543
 Transform:
   m_ObjectHideFlags: 0
@@ -1621,6 +1691,11 @@ PrefabInstance:
       propertyPath: zAdjustment
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3909883640070683233, guid: 7fbf92a95685e164c94a1a721c7286e4,
+        type: 3}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fbf92a95685e164c94a1a721c7286e4, type: 3}
 --- !u!1001 &8066734615021935871
@@ -1640,6 +1715,41 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
+        type: 3}
+      propertyPath: lettuceHealthLabel
+      value: 
+      objectReference: {fileID: 1587399505}
+    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
+        type: 3}
+      propertyPath: health
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
+        type: 3}
+      propertyPath: damageRechargeTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
+        type: 3}
+      propertyPath: Timer
+      value: 
+      objectReference: {fileID: 1842168541}
+    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
+        type: 3}
+      propertyPath: startHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
+        type: 3}
+      propertyPath: TimerGO
+      value: 
+      objectReference: {fileID: 1842168541}
+    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
+        type: 3}
+      propertyPath: GameManagerGO
+      value: 
+      objectReference: {fileID: 6360314387418425786}
     - target: {fileID: 8066734615895084026, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1695,40 +1805,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
-        type: 3}
-      propertyPath: lettuceHealthLabel
-      value: 
-      objectReference: {fileID: 1587399505}
-    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
-        type: 3}
-      propertyPath: health
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
-        type: 3}
-      propertyPath: damageRechargeTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
-        type: 3}
-      propertyPath: Timer
-      value: 
-      objectReference: {fileID: 1842168541}
-    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
-        type: 3}
-      propertyPath: startHealth
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
-        type: 3}
-      propertyPath: TimerGO
-      value: 
-      objectReference: {fileID: 1842168541}
-    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
-        type: 3}
-      propertyPath: GameManagerGO
-      value: 
-      objectReference: {fileID: 6360314387418425786}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}

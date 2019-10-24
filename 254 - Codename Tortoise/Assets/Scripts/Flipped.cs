@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flipped : StateMachineBehaviour
+public class FlippedBehaviour : StateMachineBehaviour
 {
 
     //vars
