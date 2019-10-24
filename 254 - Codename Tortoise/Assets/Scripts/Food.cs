@@ -17,6 +17,9 @@ public class Food : MonoBehaviour
     public Image gameOverPanel;
     public GameObject TimerGO;
     public GameManager GameManagerGO;
+    public float lifetime = 5f;
+    float startTime;
+   
 
     private IEnumerator doDamageCoroutine;
 
@@ -26,7 +29,9 @@ public class Food : MonoBehaviour
     {
         food = this.gameObject;
         health = startHealth;
+        startTime = Time.time;
 
+        
         percentMultiplier = 100/startHealth;
 
         if (food.name == "LettucePatch")
@@ -55,6 +60,16 @@ public class Food : MonoBehaviour
         //{
         //    Destroy(this.gameObject);
         //}
+
+        //if its decoy food, it dies automatically after time has passed
+        if(food.name == "DecoyFood(Clone)")
+        {
+            if(Time.time - startTime >= lifetime)
+            {
+                foodDie(food);
+
+            }
+        }
     }
 
     

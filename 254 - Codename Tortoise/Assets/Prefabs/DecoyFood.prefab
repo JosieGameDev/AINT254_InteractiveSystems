@@ -106,9 +106,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b00c1e64e8666843ae6e87c32c64337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  startHealth: 5
   food: {fileID: 0}
   damageRechargeTime: 5
+  lettuceHealthLabel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  TimerGO: {fileID: 0}
+  GameManagerGO: {fileID: 0}
+  lifetime: 3
 --- !u!54 &7088113600218821847
 Rigidbody:
   m_ObjectHideFlags: 0

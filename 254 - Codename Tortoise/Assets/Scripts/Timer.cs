@@ -13,17 +13,36 @@ public class Timer : MonoBehaviour
     public bool timerIsActive = true;
     public GameManager GM;
     public Food lettucePatch;
+    public bool timerCountsDown = true;
+    public float currentTime;
+    public float startTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(!timerCountsDown)
+        {
+            startTime = Time.time;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(timerIsActive);
+        if(timerCountsDown)
+        {
+            countDownUpdate();
+        }
+        else if (!timerCountsDown)
+        {
+
+        }
+            
+       
+    }
+
+    public void countDownUpdate()
+    {
         if (timerIsActive == true)
         {
             timeLeft -= Time.deltaTime;
@@ -39,9 +58,18 @@ public class Timer : MonoBehaviour
             //update text label
             timerLabel.text = timeLeft.ToString();
         }
-        else if(timerIsActive == false)
+        else if (timerIsActive == false)
         {
             timerLabel.color = (Color.red);
+        }
+    }
+
+    public void countUpUpdate()
+    {
+        if(timerIsActive)
+        {
+            currentTime = Time.time - startTime;
+            timerLabel.text = currentTime.ToString();
         }
     }
 
