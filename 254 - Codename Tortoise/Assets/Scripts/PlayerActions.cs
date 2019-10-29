@@ -10,49 +10,80 @@ public class PlayerActions : MonoBehaviour
     public int zAdjustment = 10;
     private float nextSpawnTime = 0f;
     private float spawnRate = 3f;
+    public RechargeBars spawnRechargeBar;
 
     public float nextFlipTime = 0f;
     public float flipTime = 3f;
+    public RechargeBars flipRechargeBar;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //set up recharge bar for spawn
+        spawnRechargeBar.setMaxValue(spawnRate);
+        //set up recharge bar for flip
+        flipRechargeBar.setMaxValue(flipTime);
     }
 
     // Update is called once per frame
     void Update()
     {
         throwDecoy(spawnedDecoy);
+        setFlipRecharge();
+    }
 
+    public void setFlipRecharge()
+    {
+        float timeLeft = nextFlipTime - Time.time;
+        if (1 - (timeLeft / flipTime) >= flipTime)
+        {
+            flipRechargeBar.setRechargeValue(1);
+        }
+        else
+        {
+            flipRechargeBar.setRechargeValue(1 - (timeLeft / flipTime));
+        }
+    }
+
+    public void resetRecharge()
+    {
+        flipRechargeBar.resetRecharge();
     }
 
     private void throwDecoy(GameObject SpawnedObject)
     {
         // SCRIPT TO THROW DECOY VEG ONTO FLOOR
 
-        if (Input.GetMouseButton(1))
+        //set timeleft bar
+        float timeLeft = nextSpawnTime - Time.time;
+
+        if (nextSpawnTime <= Time.time)
         {
-            if (nextSpawnTime <= Time.time)
+            if (Input.GetMouseButton(1))
             {
-                // on right click
+               //spawn if time is right and player has done input
 
-                //spawn at click point
-                //Vector3 ClickPoint = Input.mousePosition;
-                //ClickPoint.z = zAdjustment;
-                //ClickPoint = Camera.main.ScreenToWorldPoint(ClickPoint);
-                //Debug.Log(ClickPoint);
-                //ClickPoint.y = 1;
-                //Debug.Log(ClickPoint);
-
-                //spawn behind player
                 Vector3 ClickPoint = this.gameObject.transform.position;
                 ClickPoint.x += 2;
 
                 Instantiate(SpawnedObject, ClickPoint, Quaternion.identity);
                 nextSpawnTime = Time.time + spawnRate;
+
+                //reset recharge bar
+                spawnRechargeBar.resetRecharge();
+            }
+            else
+            {
+                spawnRechargeBar.setRechargeValue((1 - timeLeft / spawnRate));
             }
         }
+        else if (nextSpawnTime > Time.time)
+        {
+            
+            spawnRechargeBar.setRechargeValue((1-timeLeft / spawnRate));
+        }
+
+       // Debug.Log(1 - (timeLeft / spawnRate));
     }
 }

@@ -47,6 +47,7 @@ public class TortoiseStateChange : MonoBehaviour
                     previousState = tortoiseAnimator.GetInteger("TortoiseStateNumber");
                     tortoiseAnimator.SetInteger("TortoiseStateNumber", 3);
                     playerAction.nextFlipTime = Time.time + playerAction.flipTime;
+                    playerAction.resetRecharge();
                 }
             }
             
