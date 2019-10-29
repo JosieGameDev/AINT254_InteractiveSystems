@@ -19,6 +19,12 @@ public class Food : MonoBehaviour
     public GameManager GameManagerGO;
     public float lifetime = 5f;
     float startTime;
+
+    // UI stuff
+    public Sprite threeStars;
+    public Sprite twoStars;
+    public Sprite oneStar;
+    public Image UiStars;
    
 
     private IEnumerator doDamageCoroutine;
@@ -36,31 +42,14 @@ public class Food : MonoBehaviour
 
         if (food.name == "LettucePatch")
         {
-            //lettuceHealthLabel.text = health.ToString();
             lettuceHealthLabel.text = getHealthPercentage();
+            updateStarRating();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        //if (health <= 0 && food.name == "LettucePatch")
-        //{
-        //    GameManagerGO.StartGame();
-        //    TimerGO.GetComponent<Timer>().setTimerBool(false);
-            
-        //    Destroy(this.gameObject);
-        //    lettuceHealthLabel.text = "0% : No more lettuce left :(";
-            
-            
-
-        //}
-        //if(health <= 0)
-        //{
-        //    Destroy(this.gameObject);
-        //}
-
         //if its decoy food, it dies automatically after time has passed
         if(food.name == "DecoyFood(Clone)")
         {
@@ -124,6 +113,7 @@ public class Food : MonoBehaviour
             {
                 //lettuceHealthLabel.text = health.ToString();
                 lettuceHealthLabel.text = getHealthPercentage();
+                updateStarRating();
             }
             if (health <= 0)
             {
@@ -164,5 +154,21 @@ public class Food : MonoBehaviour
 
         Destroy(this.gameObject);
 
+    }
+    
+    public void updateStarRating()
+    {
+        if (healthPercentage >= 70)
+        {
+            UiStars.sprite = threeStars;
+        }
+        else if (healthPercentage >= 40)
+        {
+            UiStars.sprite = twoStars;
+        }
+        else
+        {
+            UiStars.sprite = oneStar;
+        }
     }
 }
