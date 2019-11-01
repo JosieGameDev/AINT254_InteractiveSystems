@@ -6,84 +6,91 @@ public class PlayerActions : MonoBehaviour
 {
 
     // vars
-    public GameObject spawnedDecoy;
-    public int zAdjustment = 10;
-    private float nextSpawnTime = 0f;
-    private float spawnRate = 3f;
-    public RechargeBars spawnRechargeBar;
 
-    public float nextFlipTime = 0f;
+    //actions
+    public Actions flipTortoise;
     public float flipTime = 3f;
     public RechargeBars flipRechargeBar;
 
+    public Actions throwDecoyFood;
+    private float spawnRate = 3f;
+    public RechargeBars spawnRechargeBar;
+    public GameObject spawnedDecoy;
 
+    public Actions testEmptyAction;
+
+    public Actions currentAction;
+
+    
     // Start is called before the first frame update
     void Start()
     {
-        //set up recharge bar for spawn
-        spawnRechargeBar.setMaxValue(spawnRate);
-        //set up recharge bar for flip
-        flipRechargeBar.setMaxValue(flipTime);
+        // create new actions 
+        flipTortoise = new Actions(flipTime, flipRechargeBar);
+        throwDecoyFood = new Actions(spawnRate, spawnRechargeBar, spawnedDecoy);
+
+        //set current action
+        currentAction = throwDecoyFood;
     }
 
     // Update is called once per frame
     void Update()
     {
-        throwDecoy(spawnedDecoy);
-        setFlipRecharge();
+        //throwDecoy(spawnedDecoy);
+        flipTortoise.UpdateRechargeBar();
+        throwDecoyFood.UpdateRechargeBar();
+
+        if(Input.GetMouseButton(1))
+        {
+            runCurrentAction();
+        }
+
+        checkMouseWheelInput();
     }
 
-    public void setFlipRecharge()
+    public void checkMouseWheelInput()
     {
-        float timeLeft = nextFlipTime - Time.time;
-        if (1 - (timeLeft / flipTime) >= flipTime)
+        if(Input.mouseScrollDelta.y !=  0)
         {
-            flipRechargeBar.setRechargeValue(1);
-        }
-        else
-        {
-            flipRechargeBar.setRechargeValue(1 - (timeLeft / flipTime));
+            changeCurrentAction();
         }
     }
 
-    public void resetRecharge()
+    public void runCurrentAction()
     {
-        flipRechargeBar.resetRecharge();
+        if(currentAction == throwDecoyFood)
+        {
+            throwDecoyAction();
+        }
+
+        if(currentAction == testEmptyAction)
+        {
+            Debug.Log("Now executing action 2");
+        }
     }
 
-    private void throwDecoy(GameObject SpawnedObject)
+    public void changeCurrentAction()
     {
-        // SCRIPT TO THROW DECOY VEG ONTO FLOOR
-
-        //set timeleft bar
-        float timeLeft = nextSpawnTime - Time.time;
-
-        if (nextSpawnTime <= Time.time)
+        if(currentAction == throwDecoyFood)
         {
-            if (Input.GetMouseButton(1))
-            {
-               //spawn if time is right and player has done input
-
-                Vector3 ClickPoint = this.gameObject.transform.position;
-                ClickPoint.x += 2;
-
-                Instantiate(SpawnedObject, ClickPoint, Quaternion.identity);
-                nextSpawnTime = Time.time + spawnRate;
-
-                //reset recharge bar
-                spawnRechargeBar.resetRecharge();
-            }
-            else
-            {
-                spawnRechargeBar.setRechargeValue((1 - timeLeft / spawnRate));
-            }
+            currentAction = testEmptyAction;
         }
-        else if (nextSpawnTime > Time.time)
+        else if (currentAction == testEmptyAction)
         {
-            
-            spawnRechargeBar.setRechargeValue((1-timeLeft / spawnRate));
+            currentAction = throwDecoyFood;
         }
-
-       // Debug.Log(1 - (timeLeft / spawnRate));
     }
+
+
+    private void throwDecoyAction()
+    {
+        if(throwDecoyFood.checkChargeReadyForAction() == true)
+        {
+            Vector3 dropPt = this.gameObject.transform.position;
+            dropPt.x -= 2;
+            throwDecoyFood.spawnAction(dropPt);
+            throwDecoyFood.setNextChargeTime(Time.time);
+        }
+    }
+    
 }

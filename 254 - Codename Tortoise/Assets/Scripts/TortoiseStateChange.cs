@@ -42,12 +42,12 @@ public class TortoiseStateChange : MonoBehaviour
         {
             if(Vector3.Distance(player.transform.position, tortoise.transform.position) <= playerFlipRange)
             { 
-                if (playerAction.nextFlipTime <= Time.time)
+                if (playerAction.flipTortoise.nextChargeReadyTime <= Time.time)
                 {
                     previousState = tortoiseAnimator.GetInteger("TortoiseStateNumber");
                     tortoiseAnimator.SetInteger("TortoiseStateNumber", 3);
-                    playerAction.nextFlipTime = Time.time + playerAction.flipTime;
-                    playerAction.resetRecharge();
+                    playerAction.flipTortoise.nextChargeReadyTime = Time.time + playerAction.flipTime;
+                    playerAction.flipTortoise.resetUiBar();
                 }
             }
             
@@ -74,21 +74,13 @@ public class TortoiseStateChange : MonoBehaviour
         }
         if (collision.gameObject.GetComponent<Food>() != null)
         {
-            //Debug.Log("is colliding wi something with food script");
+           
             foodBeingEaten = collision.gameObject;
         }
-
-        //Debug.Log("registering collision");
-        //tortoiseAnimator.SetInteger("TortoiseStateNumber", 1);
-        //collision.gameObject.GetComponent<Animator>().SetInteger("TortoiseStateNumber", 4);
-        //collision.gameObject.GetComponent<Animator>().SetInteger("TortoiseStateNumber", 1);
-
+        
     }
 
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    tortoiseAnimator.SetInteger("TortoiseStateNumber", 1);
-    //}
+    
 
     private void resetAfterEating()
     {
