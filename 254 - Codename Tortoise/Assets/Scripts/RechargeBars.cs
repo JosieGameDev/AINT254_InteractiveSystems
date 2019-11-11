@@ -8,6 +8,7 @@ public class RechargeBars : MonoBehaviour
 
     //vars
     public Slider rechargeSlider;
+    public Image rechargeImage;
     public float maxSliderValue;
     //public float currentSliderValue;
 
@@ -15,8 +16,11 @@ public class RechargeBars : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rechargeSlider = GetComponent<Slider>();
-        rechargeSlider.value = 0;
+        //rechargeSlider = GetComponent<Slider>();
+        //rechargeSlider.value = 0;
+
+        rechargeImage = GetComponent<Image>();
+        rechargeImage.fillAmount = 0;
     }
 
     // Update is called once per frame
@@ -36,11 +40,13 @@ public class RechargeBars : MonoBehaviour
         if (newValue < maxSliderValue)
         {
             //set the slider value as a % of the total
-            rechargeSlider.value = newValue / maxSliderValue;
+            //rechargeSlider.value = newValue / maxSliderValue;
+            rechargeImage.fillAmount = newValue / maxSliderValue;
         }
         else if (newValue >= maxSliderValue)
         {
-            rechargeSlider.value = 1;
+            //rechargeSlider.value = 1;
+            rechargeImage.fillAmount = 1;
         }
     }
 
@@ -50,16 +56,19 @@ public class RechargeBars : MonoBehaviour
         
         if(newPercent < 1)
         {
-            rechargeSlider.value = newPercent;
+            // rechargeSlider.value = newPercent;
+            rechargeImage.fillAmount = newPercent;
         }
         if(newPercent >= 1)
         {
-            rechargeSlider.value = 1;
+            //rechargeSlider.value = 1;
+            rechargeImage.fillAmount = 1;
         }
     }
 
     public void resetRecharge()
     {
-        rechargeSlider.value = 0;
+        //rechargeSlider.value = 0;
+        rechargeImage.fillAmount = 0;
     }
 }

@@ -12,14 +12,23 @@ public class PlayerActions : MonoBehaviour
     public float flipTime = 3f;
     public RechargeBars flipRechargeBar;
 
-    public Actions throwDecoyFood;
+    private Actions throwDecoyFood;
     private float spawnRate = 3f;
     public RechargeBars spawnRechargeBar;
     public GameObject spawnedDecoy;
 
-    public Actions testEmptyAction;
+    private Actions yellAtTortoise;
+    public float yellRate = 3f;
+    public RechargeBars yellRechargeBars;
+    public float yellRange = 5;
+    public float yellTime = 3f;
+    public GameObject yellRangeUI;
 
-    public Actions currentAction;
+    private Actions testEmptyAction;
+
+    private Actions currentAction;
+    public int currentActionIndex = 1;
+    private GameObject currentTortoise;
 
     
     // Start is called before the first frame update
@@ -28,9 +37,11 @@ public class PlayerActions : MonoBehaviour
         // create new actions 
         flipTortoise = new Actions(flipTime, flipRechargeBar);
         throwDecoyFood = new Actions(spawnRate, spawnRechargeBar, spawnedDecoy);
+        yellAtTortoise = new Actions(yellRate, yellRechargeBars);
 
         //set current action
         currentAction = throwDecoyFood;
+        yellRangeUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -39,51 +50,64 @@ public class PlayerActions : MonoBehaviour
         //throwDecoy(spawnedDecoy);
         flipTortoise.UpdateRechargeBar();
         throwDecoyFood.UpdateRechargeBar();
+        yellAtTortoise.UpdateRechargeBar();
 
         if(Input.GetMouseButton(1))
         {
             runCurrentAction();
         }
 
-        checkMouseWheelInput();
+        checkSpaceInput();
+
+        //Debug.Log(currentAction);
     }
 
-    public void checkMouseWheelInput()
+    public void checkSpaceInput()
     {
-        if(Input.mouseScrollDelta.y !=  0)
+        //if(Input.mouseScrollDelta.y !=  0)
+        if(Input.GetKeyDown("space"))
         {
+            
             changeCurrentAction();
+            
         }
     }
 
     public void runCurrentAction()
     {
-        if(currentAction == throwDecoyFood)
+        if(currentActionIndex == 1)
         {
             throwDecoyAction();
         }
-
-        if(currentAction == testEmptyAction)
+        else if(currentActionIndex == 2)
         {
-            Debug.Log("Now executing action 2");
+            yellAction();
         }
     }
 
     public void changeCurrentAction()
     {
-        if(currentAction == throwDecoyFood)
+
+        if(currentActionIndex == 1)
         {
-            currentAction = testEmptyAction;
+            yellRangeUI.SetActive(true);
+            currentActionIndex = 2;
         }
-        else if (currentAction == testEmptyAction)
+        else if (currentActionIndex == 2)
         {
-            currentAction = throwDecoyFood;
+            yellRangeUI.SetActive(false);
+            currentActionIndex = 1;
         }
+
+        
+    
+       
     }
 
 
     private void throwDecoyAction()
     {
+        
         if(throwDecoyFood.checkChargeReadyForAction() == true)
         {
             Vector3 dropPt = this.gameObject.transform.position;
@@ -91,6 +115,54 @@ public class PlayerActions : MonoBehaviour
             throwDecoyFood.spawnAction(dropPt);
             throwDecoyFood.setNextChargeTime(Time.time);
         }
+    }
+
+    private void yellAction()
+    {
+
+       
+
+        if(yellAtTortoise.checkChargeReadyForAction() == true)
+        {
+
+            //play anim
+            StartCoroutine(setYellUIAnim());
+            //get array of tortoise
+            GameObject[] tortoisArray = GameObject.FindGameObjectsWithTag("tortoise");
+            
+
+            //check through array to find tortoise within range
+            foreach(GameObject g in tortoisArray)
+            {
+                if(Vector3.Distance(this.transform.position, g.transform.position) <= yellRange )
+                {
+                   
+                    StartCoroutine(yellAndReset(g));
+                }
+            }
+
+            yellAtTortoise.setNextChargeTime(Time.time);
+            
+        }
+    }
+    
+
+    public IEnumerator yellAndReset(GameObject g)
+    {
+
+        
+        g.GetComponent<Animator>().SetInteger("TortoiseStateNumber", 4);
+
+        //currentTortoise = g;
+        yield return new WaitForSeconds(yellTime);
+        g.GetComponent<Animator>().SetInteger("TortoiseStateNumber", 1);
+    }
+
+    public IEnumerator setYellUIAnim()
+    {
+        yellRangeUI.GetComponent<Animator>().SetBool("isShouting", true);
+        yield return new WaitForSeconds(1f);
+        yellRangeUI.GetComponent<Animator>().SetBool("isShouting", false);
     }
     
 }
