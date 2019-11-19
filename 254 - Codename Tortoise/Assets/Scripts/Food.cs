@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Food : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class Food : MonoBehaviour
     private int percentMultiplier;
     public GameObject food;
     public float damageRechargeTime = .5f;
-    public Text lettuceHealthLabel;
+    private TextMeshProUGUI lettuceHealthLabel;
+    public GameObject lettuceHealthLableGO;
     public Image gameOverPanel;
     public GameObject TimerGO;
     public GameManager GameManagerGO;
@@ -35,6 +37,8 @@ public class Food : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+
         food = this.gameObject;
         health = startHealth;
         startTime = Time.time;
@@ -44,6 +48,7 @@ public class Food : MonoBehaviour
 
         if (food.name == "LettucePatch")
         {
+            lettuceHealthLabel = lettuceHealthLableGO.GetComponent<TextMeshProUGUI>();
             lettuceHealthLabel.text = getHealthPercentage();
             updateStarRating();
         }
@@ -139,7 +144,7 @@ public class Food : MonoBehaviour
 
     public  IEnumerator particleSystemToggle()
     {
-        Debug.Log("Running particle toggle");
+        //Debug.Log("Running particle toggle");
         eatingDebris.Play();
         yield return new WaitForSeconds(particleBurstTime);
         eatingDebris.Stop();

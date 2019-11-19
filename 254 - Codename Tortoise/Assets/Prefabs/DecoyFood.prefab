@@ -87,9 +87,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 5
-  food: {fileID: 0}
+  food: {fileID: 2301700717114491793}
   damageRechargeTime: 5
-  lettuceHealthLabel: {fileID: 0}
+  lettuceHealthLableGO: {fileID: 0}
   gameOverPanel: {fileID: 0}
   TimerGO: {fileID: 0}
   GameManagerGO: {fileID: 0}

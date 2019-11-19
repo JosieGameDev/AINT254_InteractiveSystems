@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 
@@ -9,7 +10,8 @@ public class Timer : MonoBehaviour
 {
     
     public float timeLeft = 30f;
-    public Text timerLabel;
+    public GameObject timerLabelGO;
+    private TextMeshProUGUI timerLabel;
     public bool timerIsActive = true;
     public GameManager GM;
     public Food lettucePatch;
@@ -20,6 +22,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timerLabel = timerLabelGO.GetComponent<TextMeshProUGUI>();
         if(!timerCountsDown)
         {
             startTime = Time.time;
