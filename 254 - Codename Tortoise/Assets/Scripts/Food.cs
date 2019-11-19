@@ -19,6 +19,8 @@ public class Food : MonoBehaviour
     public GameManager GameManagerGO;
     public float lifetime = 5f;
     float startTime;
+    public ParticleSystem eatingDebris;
+    public float particleBurstTime;
 
     // UI stuff
     public Sprite threeStars;
@@ -36,7 +38,7 @@ public class Food : MonoBehaviour
         food = this.gameObject;
         health = startHealth;
         startTime = Time.time;
-
+        eatingDebris.Pause();
         
         percentMultiplier = 100/startHealth;
 
@@ -107,10 +109,11 @@ public class Food : MonoBehaviour
             
             health--;
             //Debug.Log(health + collidingObject.name);
-            
-            
+            StartCoroutine("particleSystemToggle");
+
             if (food.name == "LettucePatch")
             {
+                
                 //lettuceHealthLabel.text = health.ToString();
                 lettuceHealthLabel.text = getHealthPercentage();
                 updateStarRating();
@@ -131,6 +134,16 @@ public class Food : MonoBehaviour
             //Debug.Log(health + collidingObject.name);
             yield return new WaitForSeconds(damageRechargeTime);
         }
+        
+    }
+
+    public  IEnumerator particleSystemToggle()
+    {
+        Debug.Log("Running particle toggle");
+        eatingDebris.Play();
+        yield return new WaitForSeconds(particleBurstTime);
+        eatingDebris.Stop();
+
         
     }
 

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SetTextAtEnd : MonoBehaviour
 {
-    public Text TextToSet;
+    private TextMeshProUGUI TMP_TextToSet;
+    public GameObject TextToSet;
     private GameObject GameManObj;
     private GlobalObject GO;
     public bool displayTime = false;
@@ -14,16 +16,19 @@ public class SetTextAtEnd : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TMP_TextToSet = TextToSet.GetComponent<TextMeshProUGUI>();
+        Debug.Log(TMP_TextToSet);
+        Debug.Log(TMP_TextToSet.text);
         GameManObj = GameObject.FindGameObjectWithTag("GlobalObject");
         GO = GameManObj.GetComponent<GlobalObject>();
 
         if(displayTime == true)
         {
-            TextToSet.text = "Your lettuce was all eaten! And with just " + GO.timeRemaining.ToString() + " seconds left!";
+            TMP_TextToSet.text = "Your lettuce was all eaten! And with just " + GO.timeRemaining.ToString() + " seconds left!";
         }
         else if(displayHealth == true)
         {
-            TextToSet.text = "Your lettuce survived! Well, " + GO.healthLeft + " of it survived, at least" + getStarRating();
+            TMP_TextToSet.text = "Your lettuce survived! Well, " + GO.healthLeft + " of it survived, at least" + getStarRating();
         }
     }
 
