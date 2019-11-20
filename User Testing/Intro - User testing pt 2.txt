@@ -1,0 +1,12 @@
+			HI!
+
+				-Aim of the game is to keep the letuce safe from the oncoming tortoise until the timer runs out
+				-Move player with WASD
+				-Click on tortoise when close enough to flip them over - will pause them until another one saves them
+				-Right click to do your secondary action; either a loud noise which stuns nearby tortoise, or dropping decoy carrot to distract them
+				-Toggle between secondary actions with the Spacebar
+
+			The levels will have more actions available and more tortoise to ward off as difficulty increases
+			Particle effects are meant to simulate food being eaten 
+
+			THANKS

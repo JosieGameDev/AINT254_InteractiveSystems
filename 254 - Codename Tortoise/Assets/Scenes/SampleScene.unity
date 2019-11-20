@@ -1220,7 +1220,7 @@ Camera:
   m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 232.86159
+  m_FocalLength: 305.42038
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1229,9 +1229,9 @@ Camera:
     height: 1
   near clip plane: 0.16
   far clip plane: 1000
-  field of view: 5.9
+  field of view: 4.5
   orthographic: 0
-  orthographic size: 1.9397322
+  orthographic size: 2.0429688
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2650,7 +2650,7 @@ PrefabInstance:
     - target: {fileID: 3909883640070683237, guid: 7fbf92a95685e164c94a1a721c7286e4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.57
+      value: -3.09
       objectReference: {fileID: 0}
     - target: {fileID: 3909883640070683237, guid: 7fbf92a95685e164c94a1a721c7286e4,
         type: 3}
@@ -2660,7 +2660,7 @@ PrefabInstance:
     - target: {fileID: 3909883640070683237, guid: 7fbf92a95685e164c94a1a721c7286e4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 3909883640070683237, guid: 7fbf92a95685e164c94a1a721c7286e4,
         type: 3}
@@ -2816,6 +2816,11 @@ PrefabInstance:
       propertyPath: lettuceHealthLableGO
       value: 
       objectReference: {fileID: 1412412360}
+    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
+        type: 3}
+      propertyPath: startHealth
+      value: 43
+      objectReference: {fileID: 0}
     - target: {fileID: 8066734615895084026, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
         type: 3}
       propertyPath: m_LocalPosition.x
