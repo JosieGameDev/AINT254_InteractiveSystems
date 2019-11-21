@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using System;
 
 
 public class Timer : MonoBehaviour
 {
     
-    public float timeLeft = 30f;
+    public double timeLeft = 30f;
     public GameObject timerLabelGO;
     private TextMeshProUGUI timerLabel;
     public bool timerIsActive = true;
@@ -59,6 +59,7 @@ public class Timer : MonoBehaviour
             }
 
             //update text label
+            timeLeft = Math.Round(timeLeft, 2);
             timerLabel.text = timeLeft.ToString();
         }
         else if (timerIsActive == false)

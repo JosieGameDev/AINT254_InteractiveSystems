@@ -160,7 +160,7 @@ public class PlayerActions : MonoBehaviour
 
         
         g.GetComponent<Animator>().SetInteger("TortoiseStateNumber", 4);
-
+        
         //currentTortoise = g;
         yield return new WaitForSeconds(yellTime);
         g.GetComponent<Animator>().SetInteger("TortoiseStateNumber", 1);

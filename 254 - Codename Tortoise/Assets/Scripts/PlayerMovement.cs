@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody playerRB;
     public float speed = 3f;
     private Vector3 inputs = Vector3.zero;
+    public float playerAdjustAngle;
 
 
     #endregion
@@ -31,5 +32,10 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         playerRB.MovePosition(playerRB.position + inputs * speed * Time.deltaTime);
+        if(inputs != Vector3.zero)
+        {
+            playerRB.transform.forward = inputs;
+        }
+        
     }
 }

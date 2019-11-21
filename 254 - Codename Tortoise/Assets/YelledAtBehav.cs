@@ -8,7 +8,7 @@ public class YelledAtBehav : StateMachineBehaviour
     //vars
     float startTime;
     float currentTime;
-    float endTime = 4f;
+    float endTime = 2f;
     Animator thisAnimator;
 
 
