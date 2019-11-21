@@ -79,7 +79,7 @@ public class WallkToLettuce : StateMachineBehaviour
         foreach(GameObject g in tortoiseArray)
         {
             
-            if (g.GetComponent<Animator>().GetInteger("TortoiseStateNumber") == 3)
+            if (g.GetComponent<Animator>().GetInteger("TortoiseStateNumber") == 3 || g.GetComponent<Animator>().GetInteger("TortoiseStateNumber") == 4)
             {
                 
                 float distance = Vector3.Distance(tortoiseTransform.position, g.transform.position);
