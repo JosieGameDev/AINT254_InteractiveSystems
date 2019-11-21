@@ -23,6 +23,8 @@ public class PlayerActions : MonoBehaviour
     public float yellRange = 5;
     public float yellTime = 3f;
     public GameObject yellRangeUI;
+    public NoiseImpact noiseAOE;
+    public GameObject noiseTrigger;
 
     private Actions testEmptyAction;
 
@@ -42,6 +44,10 @@ public class PlayerActions : MonoBehaviour
         //set current action
         currentAction = throwDecoyFood;
         yellRangeUI.SetActive(false);
+
+        //set up spook ui circle
+        //noiseImpactAreaTrigger = yellRangeUI.GetComponent<SphereCollider>();
+        noiseTrigger.SetActive(false);
     }
 
     // Update is called once per frame
@@ -128,18 +134,20 @@ public class PlayerActions : MonoBehaviour
             //play anim
             StartCoroutine(setYellUIAnim());
             //get array of tortoise
-            GameObject[] tortoisArray = GameObject.FindGameObjectsWithTag("tortoise");
+            //GameObject[] tortoisArray = GameObject.FindGameObjectsWithTag("tortoise");
             
 
-            //check through array to find tortoise within range
-            foreach(GameObject g in tortoisArray)
-            {
-                if(Vector3.Distance(this.transform.position, g.transform.position) <= yellRange )
-                {
+            ////check through array to find tortoise within range
+            //foreach(GameObject g in tortoisArray)
+            //{
+            //    if(Vector3.Distance(this.transform.position, g.transform.position) <= yellRange )
+            //    {
                    
-                    StartCoroutine(yellAndReset(g));
-                }
-            }
+            //        StartCoroutine(yellAndReset(g));
+            //    }
+            //}
+
+
 
             yellAtTortoise.setNextChargeTime(Time.time);
             
@@ -160,9 +168,13 @@ public class PlayerActions : MonoBehaviour
 
     public IEnumerator setYellUIAnim()
     {
+        // set anim and turn on collider for trigger events
         yellRangeUI.GetComponent<Animator>().SetBool("isShouting", true);
+        yield return new WaitForSeconds(0.2f);
+        noiseTrigger.SetActive(true);
         yield return new WaitForSeconds(1f);
         yellRangeUI.GetComponent<Animator>().SetBool("isShouting", false);
+        noiseTrigger.SetActive(false);
     }
     
 }

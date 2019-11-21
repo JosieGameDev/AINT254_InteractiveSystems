@@ -28,7 +28,7 @@ public class SetTextAtEnd : MonoBehaviour
         }
         else if(displayHealth == true)
         {
-            TMP_TextToSet.text = "Your lettuce survived! Well, " + GO.healthLeft + " of it survived, at least" + getStarRating();
+            TMP_TextToSet.text = "Your lettuce survived! Well, " + GO.healthLeft + "% of it survived, at least. STAR RATING =" + getStarRating();
         }
     }
 
