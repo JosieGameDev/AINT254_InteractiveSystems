@@ -78,7 +78,27 @@ public class Food : MonoBehaviour
             doDamageCoroutine = takeDamage(collision.gameObject);
             StartCoroutine(doDamageCoroutine);
         }
+
+        //if(collision.gameObject.tag == "eatTrigger")
+        //{
+        //    doDamageCoroutine = takeDamage(collision.gameObject);
+        //    StartCoroutine(doDamageCoroutine);
+        //}
     }
+
+
+
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == "tortoise")
+    //    {
+    //        if(collision.gameObject.GetComponent<Animator>().GetInteger("TortoiseStateNumber") == 2)
+    //        {
+    //            StopCoroutine(doDamageCoroutine);
+    //        }
+            
+    //    }
+    //}
 
     private void OnCollisionExit(Collision collision)
     {
@@ -105,30 +125,29 @@ public class Food : MonoBehaviour
         return healthPercentOutput;
     }
 
-
-    private IEnumerator takeDamage(GameObject collidingObject)
+    private void assignDamage(GameObject collidingObject)
     {
-        
-        while(true)
+        if (collidingObject.GetComponent<Animator>().GetInteger("TortoiseStateNumber") == 2)
         {
             
+
             health--;
             //Debug.Log(health + collidingObject.name);
             StartCoroutine("particleSystemToggle");
 
             if (food.name == "LettucePatch")
             {
-                
+
                 //lettuceHealthLabel.text = health.ToString();
                 lettuceHealthLabel.text = getHealthPercentage();
                 updateStarRating();
             }
             if (health <= 0)
             {
-                
+
                 foodDie(collidingObject);
             }
-            if(food.name == "LettucePatch" && health <= 0)
+            if (food.name == "LettucePatch" && health <= 0)
             {
                 TimerGO.GetComponent<Timer>().setTimerBool(false);
                 lettuceHealthLabel.text = "No more lettuce left :(";
@@ -136,8 +155,22 @@ public class Food : MonoBehaviour
                 //GameManagerGO.StartGame();
                 GameManagerGO.endScreenLose();
             }
-            //Debug.Log(health + collidingObject.name);
-            yield return new WaitForSeconds(damageRechargeTime);
+        }
+    }
+
+    private IEnumerator takeDamage(GameObject collidingObject)
+    {
+        
+        while(true)
+        {
+            assignDamage(collidingObject);
+            
+           yield return new WaitForSeconds(damageRechargeTime);
+            
+            //else
+            //{
+            //    StopAllCoroutines();
+            //}
         }
         
     }
