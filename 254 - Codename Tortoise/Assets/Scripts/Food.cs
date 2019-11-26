@@ -29,7 +29,7 @@ public class Food : MonoBehaviour
     public Sprite twoStars;
     public Sprite oneStar;
     public Image UiStars;
-   
+    public lettuceHealthUI uiImage;
 
     private IEnumerator doDamageCoroutine;
 
@@ -79,26 +79,9 @@ public class Food : MonoBehaviour
             StartCoroutine(doDamageCoroutine);
         }
 
-        //if(collision.gameObject.tag == "eatTrigger")
-        //{
-        //    doDamageCoroutine = takeDamage(collision.gameObject);
-        //    StartCoroutine(doDamageCoroutine);
-        //}
     }
 
 
-
-    //private void OnCollisionStay(Collision collision)
-    //{
-    //    if (collision.gameObject.tag == "tortoise")
-    //    {
-    //        if(collision.gameObject.GetComponent<Animator>().GetInteger("TortoiseStateNumber") == 2)
-    //        {
-    //            StopCoroutine(doDamageCoroutine);
-    //        }
-            
-    //    }
-    //}
 
     private void OnCollisionExit(Collision collision)
     {
@@ -137,9 +120,8 @@ public class Food : MonoBehaviour
 
             if (food.name == "LettucePatch")
             {
-
-                //lettuceHealthLabel.text = health.ToString();
                 lettuceHealthLabel.text = getHealthPercentage();
+                uiImage.updateLettuceHealth(getHealthPercentInt());
                 updateStarRating();
             }
             if (health <= 0)
@@ -151,6 +133,7 @@ public class Food : MonoBehaviour
             {
                 TimerGO.GetComponent<Timer>().setTimerBool(false);
                 lettuceHealthLabel.text = "No more lettuce left :(";
+                uiImage.updateLettuceHealth(0);
                 GlobalObject.Instance.timeRemaining = TimerGO.GetComponent<Timer>().timeLeft;
                 //GameManagerGO.StartGame();
                 GameManagerGO.endScreenLose();
