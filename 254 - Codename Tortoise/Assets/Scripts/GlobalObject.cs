@@ -10,8 +10,12 @@ public class GlobalObject : MonoBehaviour
     public float healthLeft;
     public double timeRemaining;
 
+    public bool[] unlockedLevels;
+
     private void Awake()
     {
+        unlockedLevels = new bool[3] { true, false, false };
+
         if(Instance == null)
         {
             DontDestroyOnLoad(gameObject);
@@ -23,6 +27,15 @@ public class GlobalObject : MonoBehaviour
         }
     }
 
+    public void unlockLevel(int levelRef)
+    {
+        unlockedLevels[levelRef] = true;
+    }
+
+    public bool checkLevelUnlocked(int levelRef)
+    {
+        return unlockedLevels[levelRef];
+    }
 
     //// Start is called before the first frame update
     //void Start()

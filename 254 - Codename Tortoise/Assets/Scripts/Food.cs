@@ -24,6 +24,8 @@ public class Food : MonoBehaviour
     public ParticleSystem eatingDebris;
     public float particleBurstTime;
 
+    //public RechargeBars decoyHealthBar;
+
     // UI stuff
     public Sprite threeStars;
     public Sprite twoStars;
@@ -52,6 +54,7 @@ public class Food : MonoBehaviour
             lettuceHealthLabel.text = getHealthPercentage();
             updateStarRating();
         }
+        
     }
 
     // Update is called once per frame
@@ -124,6 +127,7 @@ public class Food : MonoBehaviour
                 uiImage.updateLettuceHealth(getHealthPercentInt());
                 updateStarRating();
             }
+           
             if (health <= 0)
             {
 

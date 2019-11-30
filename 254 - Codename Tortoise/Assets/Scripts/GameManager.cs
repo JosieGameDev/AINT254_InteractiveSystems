@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public int thisLevelRef;
+    public GlobalObject GlobObj;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +20,24 @@ public class GameManager : MonoBehaviour
     }
 
 
+    // MANAGING LEVELS
+
+    public void unlockNextLevel()
+    {
+        GlobObj.unlockLevel(thisLevelRef + 1);
+    }
+
+    // MANAGING SCENES
+
     public void StartGame()
     {
         //load menu screen
         SceneManager.LoadScene("OpenScreen");
+    }
+
+    public void openLevelSelect()
+    {
+        SceneManager.LoadScene("LevelSelection");
     }
 
     public void openSample()
