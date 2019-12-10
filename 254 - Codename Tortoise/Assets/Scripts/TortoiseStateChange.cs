@@ -13,6 +13,7 @@ public class TortoiseStateChange : MonoBehaviour
     public GameObject foodBeingEaten;
     public GameObject spawnedDecoy;
     public int zAdjustment = 10;
+    public float speed;
     
     private GameObject player;
     private PlayerActions playerAction;
@@ -25,6 +26,7 @@ public class TortoiseStateChange : MonoBehaviour
         tortoiseAnimator = this.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerAction = player.GetComponent<PlayerActions>();
+        speed = Random.Range(.3f, 1.2f);
     }
 
     // Update is called once per frame
@@ -48,10 +50,11 @@ public class TortoiseStateChange : MonoBehaviour
                     tortoiseAnimator.SetInteger("TortoiseStateNumber", 3);
                     playerAction.flipTortoise.nextChargeReadyTime = Time.time + playerAction.flipTime;
                     playerAction.flipTortoise.resetUiBar();
+                    Invoke("resetTortoiseState", 5);
                 }
             }
             
-            //Invoke("resetTortoiseState", pauseTime);
+            
         }
         
     }

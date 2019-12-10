@@ -984,7 +984,7 @@ Camera:
   far clip plane: 1000
   field of view: 4.5
   orthographic: 0
-  orthographic size: 2.0664062
+  orthographic size: 1.9397322
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1943,7 +1943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2547,6 +2547,42 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 554031011, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 554031011, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 380193307, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 380193307, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 380193307, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 222706040, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -75.99994
+      objectReference: {fileID: 0}
+    - target: {fileID: 554031013, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -76
+      objectReference: {fileID: 0}
+    - target: {fileID: 222706041, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 222706041, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
+      propertyPath: m_Type
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}

@@ -19,7 +19,7 @@ public class WallkToLettuce : StateMachineBehaviour
     {
         tortoiseTransform = animator.GetComponent<Transform>();
         if (changeMoveToTarget().transform != null) goalTransform = changeMoveToTarget().transform;
-        speed = Random.Range(.1f, 1f);
+        speed = animator.GetComponent<TortoiseStateChange>().speed;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

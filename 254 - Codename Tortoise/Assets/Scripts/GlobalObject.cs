@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GlobalObject : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class GlobalObject : MonoBehaviour
     public double timeRemaining;
 
     public bool[] unlockedLevels;
+
+    public Sprite levelOneStars;
+    public Sprite levelTwoStars;
+    public Sprite levelThreeStars;
 
     private void Awake()
     {

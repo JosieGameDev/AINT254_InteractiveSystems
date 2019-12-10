@@ -32,6 +32,7 @@ public class Food : MonoBehaviour
     public Sprite oneStar;
     public Image UiStars;
     public lettuceHealthUI uiImage;
+    public int level;
 
     private IEnumerator doDamageCoroutine;
 
@@ -207,6 +208,18 @@ public class Food : MonoBehaviour
         else
         {
             UiStars.sprite = oneStar;
+        }
+        if(level == 1)
+        {
+            GlobalObject.Instance.levelOneStars = UiStars.sprite;
+        }
+        else if (level == 2)
+        {
+            GlobalObject.Instance.levelTwoStars = UiStars.sprite;
+        }
+        else if (level == 3)
+        {
+            GlobalObject.Instance.levelThreeStars = UiStars.sprite;
         }
     }
 }
