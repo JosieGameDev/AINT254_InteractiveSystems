@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
         GlobObj.unlockLevel(thisLevelRef + 1);
     }
 
+    public int getLevelRef()
+    {
+        return thisLevelRef;
+    }
+
     // MANAGING SCENES
 
     public void StartGame()
@@ -47,7 +52,17 @@ public class GameManager : MonoBehaviour
 
     public void LevelOne()
     {
+        SceneManager.LoadScene("LevelOne");
+    }
 
+    public void LevelTwo()
+    {
+        SceneManager.LoadScene("LevelTwo");
+    }
+
+    public void LevelThree()
+    {
+        SceneManager.LoadScene("LevelThree");
     }
 
     public void endScreenWin()

@@ -16,10 +16,11 @@ public class GlobalObject : MonoBehaviour
     public Sprite levelOneStars;
     public Sprite levelTwoStars;
     public Sprite levelThreeStars;
+    public int refOfLevelJustPlayed;
 
     private void Awake()
     {
-        unlockedLevels = new bool[3] { true, false, false };
+        unlockedLevels = new bool[4] { true, false, false, false };
 
         if(Instance == null)
         {

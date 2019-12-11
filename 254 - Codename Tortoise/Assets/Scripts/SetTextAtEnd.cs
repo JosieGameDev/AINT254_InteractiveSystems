@@ -13,6 +13,8 @@ public class SetTextAtEnd : MonoBehaviour
     public bool displayTime = false;
     public bool displayHealth = true;
     public GameManager gameMan;
+    public Image starRateImage;
+    public int nextLevel;
     //public levelManager levelMan;
     //public string starRating;
     // Start is called before the first frame update
@@ -30,8 +32,9 @@ public class SetTextAtEnd : MonoBehaviour
         }
         else if(displayHealth == true)
         {
-            TMP_TextToSet.text = "Your lettuce survived! Well, " + GO.healthLeft + "% of it survived, at least. STAR RATING =" + getStarRating();
-            GO.unlockLevel(1);
+            TMP_TextToSet.text = "Your lettuce survived! Well, " + GO.healthLeft + "% of it survived, at least.";
+            displayStarRating();
+            GO.unlockLevel(nextLevel);
         }
     }
 
@@ -41,23 +44,22 @@ public class SetTextAtEnd : MonoBehaviour
         
     }
 
-    public string getStarRating()
+    public void displayStarRating()
     {
-        string starRating;
-
-        if(GO.healthLeft >= 70)
+        if(GO.refOfLevelJustPlayed == 0)
         {
-            starRating = "***";
+            starRateImage.sprite = GO.levelOneStars;
+            nextLevel = 1;
         }
-        else if (GO.healthLeft >=40)
+        if (GO.refOfLevelJustPlayed == 1)
         {
-            starRating = "**";
+            starRateImage.sprite = GO.levelTwoStars;
+            nextLevel = 2;
         }
-        else
+        if (GO.refOfLevelJustPlayed == 2)
         {
-            starRating = "*";
+            starRateImage.sprite = GO.levelThreeStars;
+            nextLevel = 3;
         }
-
-        return starRating;
     }
 }

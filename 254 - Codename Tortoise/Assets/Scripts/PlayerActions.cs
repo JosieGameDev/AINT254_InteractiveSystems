@@ -32,38 +32,68 @@ public class PlayerActions : MonoBehaviour
     public int currentActionIndex = 1;
     private GameObject currentTortoise;
 
+    //set available actions in editor
+    public bool decoyAvailable;
+    public bool yellAvailable;
+
     
     // Start is called before the first frame update
     void Start()
     {
         // create new actions 
         flipTortoise = new Actions(flipTime, flipRechargeBar);
-        throwDecoyFood = new Actions(spawnRate, spawnRechargeBar, spawnedDecoy);
-        yellAtTortoise = new Actions(yellRate, yellRechargeBars);
+        if(decoyAvailable)
+        {
+            throwDecoyFood = new Actions(spawnRate, spawnRechargeBar, spawnedDecoy);
+        }
+        
+        if(yellAvailable)
+        {
+            yellAtTortoise = new Actions(yellRate, yellRechargeBars);
+
+            currentAction = throwDecoyFood;
+            yellRangeUI.SetActive(false);
+
+            //set up spook ui circle
+            //noiseImpactAreaTrigger = yellRangeUI.GetComponent<SphereCollider>();
+            noiseTrigger.SetActive(false);
+        }
+        else if(!yellAvailable)
+        {
+            yellRangeUI.SetActive(false);
+        }
+        
 
         //set current action
-        currentAction = throwDecoyFood;
-        yellRangeUI.SetActive(false);
-
-        //set up spook ui circle
-        //noiseImpactAreaTrigger = yellRangeUI.GetComponent<SphereCollider>();
-        noiseTrigger.SetActive(false);
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        //throwDecoy(spawnedDecoy);
-        flipTortoise.UpdateRechargeBar();
-        throwDecoyFood.UpdateRechargeBar();
-        yellAtTortoise.UpdateRechargeBar();
-
-        if(Input.GetMouseButton(1))
+        if (decoyAvailable)
         {
-            runCurrentAction();
+            throwDecoyFood.UpdateRechargeBar();
         }
 
-        checkSpaceInput();
+        if (yellAvailable)
+        {
+            yellAtTortoise.UpdateRechargeBar();
+            checkSpaceInput();
+        }
+        //throwDecoy(spawnedDecoy);
+        flipTortoise.UpdateRechargeBar();
+
+
+        if (decoyAvailable || yellAvailable)
+        {
+            if (Input.GetMouseButton(1))
+            {
+                runCurrentAction();
+            }
+        }
+
+        
 
         //Debug.Log(currentAction);
     }

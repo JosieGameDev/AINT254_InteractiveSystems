@@ -27,6 +27,8 @@ public class Timer : MonoBehaviour
         {
             startTime = Time.time;
         }
+
+        GlobalObject.Instance.refOfLevelJustPlayed = GameObject.FindGameObjectWithTag("GameMan").GetComponent<GameManager>().thisLevelRef;
     }
 
     // Update is called once per frame
