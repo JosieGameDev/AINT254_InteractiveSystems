@@ -315,7 +315,7 @@ PrefabInstance:
     - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
         type: 3}
       propertyPath: damageRechargeTime
-      value: 0.8
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
         type: 3}
@@ -395,10 +395,15 @@ PrefabInstance:
     - target: {fileID: 554031011, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: 196b808d69978b54e8e56c427570ceb0,
+        type: 3}
     - target: {fileID: 554031011, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
       propertyPath: m_Type
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 554031011, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 380193307, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -423,10 +428,11 @@ PrefabInstance:
     - target: {fileID: 222706041, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: 196b808d69978b54e8e56c427570ceb0,
+        type: 3}
     - target: {fileID: 222706041, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
       propertyPath: m_Type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
@@ -1193,7 +1199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tortoisePrefab: {fileID: 3679714958970661110, guid: 6045c7eeb8f836c49b79964c2f216afd,
     type: 3}
-  spawnRate: 1.24
+  spawnRate: 2.24
   maxTortoiseInScene: 10
 --- !u!4 &1148906420
 Transform:
@@ -1277,7 +1283,7 @@ Camera:
   far clip plane: 1000
   field of view: 4.5
   orthographic: 0
-  orthographic size: 2.125
+  orthographic size: 2.017857
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

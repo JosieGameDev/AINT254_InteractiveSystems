@@ -26,7 +26,7 @@ public class TortoiseStateChange : MonoBehaviour
         tortoiseAnimator = this.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         playerAction = player.GetComponent<PlayerActions>();
-        speed = Random.Range(.3f, 1.2f);
+        speed = Random.Range(.15f, 1.1f);
     }
 
     // Update is called once per frame

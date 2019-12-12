@@ -9,12 +9,14 @@ public class levelButtons : MonoBehaviour
     private Button button;
     public int levelRef;
     public GlobalObject globObj;
+    public GameObject levelDescription;
 
     public Image StarRating;
 
     // Start is called before the first frame update
     void Start()
     {
+        levelDescription.SetActive(false);
         button = gameObject.GetComponent<Button>();
         globObj = GameObject.FindGameObjectWithTag("GlobalObject").GetComponent<GlobalObject>();
 
@@ -66,5 +68,23 @@ public class levelButtons : MonoBehaviour
         {
             StarRating.sprite = globObj.levelThreeStars;
         }
+    }
+
+
+    private void OnMouseOver()
+    {
+        if(button.interactable == true)
+        {
+            levelDescription.SetActive(true);
+        }
+        
+    }
+    private void OnMouseExit()
+    {
+        if (button.interactable == true)
+        {
+            levelDescription.SetActive(false);
+        }
+        
     }
 }

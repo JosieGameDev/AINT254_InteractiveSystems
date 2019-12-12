@@ -266,6 +266,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &111368554 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1914787291689226925, guid: 92db6430fbf78ba45b8e9f444db881b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1710570766}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59eedf080bd96e343b84f5da80f0e162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &177238074
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,6 +365,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManagerObj
       objectReference: {fileID: 0}
+    - target: {fileID: 6360314388171032425, guid: 37cde49bb8ab18d4b83013086bd3e436,
+        type: 3}
+      propertyPath: m_TagString
+      value: GameMan
+      objectReference: {fileID: 0}
     - target: {fileID: 6360314388171032424, guid: 37cde49bb8ab18d4b83013086bd3e436,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -408,6 +425,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6475721260284167528, guid: 37cde49bb8ab18d4b83013086bd3e436,
+        type: 3}
+      propertyPath: GlobObj
+      value: 
+      objectReference: {fileID: 111368554}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37cde49bb8ab18d4b83013086bd3e436, type: 3}
 --- !u!114 &180846493 stripped
@@ -725,7 +747,7 @@ Camera:
   far clip plane: 1000
   field of view: 4.5
   orthographic: 0
-  orthographic size: 2.125
+  orthographic size: 2.017857
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1051,7 +1073,7 @@ PrefabInstance:
     - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
         type: 3}
       propertyPath: damageRechargeTime
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
         type: 3}
@@ -1131,9 +1153,18 @@ PrefabInstance:
     - target: {fileID: 554031011, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: 196b808d69978b54e8e56c427570ceb0,
+        type: 3}
     - target: {fileID: 554031011, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
       propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 554031011, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 554031011, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
+      propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 380193307, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
@@ -1159,10 +1190,11 @@ PrefabInstance:
     - target: {fileID: 222706041, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: 21300000, guid: 196b808d69978b54e8e56c427570ceb0,
+        type: 3}
     - target: {fileID: 222706041, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
       propertyPath: m_Type
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e58a5c2e791ed44c911dbeb44e8b20e, type: 3}
@@ -1363,6 +1395,11 @@ PrefabInstance:
       propertyPath: noiseTrigger
       value: 
       objectReference: {fileID: 1254048987}
+    - target: {fileID: 7568582068376806646, guid: 7fbf92a95685e164c94a1a721c7286e4,
+        type: 3}
+      propertyPath: flipTime
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8674951194567559708, guid: 7fbf92a95685e164c94a1a721c7286e4,
         type: 3}
       propertyPath: m_Color.a
@@ -2230,8 +2267,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tortoisePrefab: {fileID: 3679714958970661110, guid: 6045c7eeb8f836c49b79964c2f216afd,
     type: 3}
-  spawnRate: 1.24
-  maxTortoiseInScene: 10
+  spawnRate: 1.5
+  maxTortoiseInScene: 5
 --- !u!4 &1913089808
 Transform:
   m_ObjectHideFlags: 0
