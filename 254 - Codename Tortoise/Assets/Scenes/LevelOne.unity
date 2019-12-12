@@ -370,6 +370,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: GameMan
       objectReference: {fileID: 0}
+    - target: {fileID: -6475721260284167528, guid: 37cde49bb8ab18d4b83013086bd3e436,
+        type: 3}
+      propertyPath: GlobObj
+      value: 
+      objectReference: {fileID: 111368554}
     - target: {fileID: 6360314388171032424, guid: 37cde49bb8ab18d4b83013086bd3e436,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -425,11 +430,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6475721260284167528, guid: 37cde49bb8ab18d4b83013086bd3e436,
-        type: 3}
-      propertyPath: GlobObj
-      value: 
-      objectReference: {fileID: 111368554}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37cde49bb8ab18d4b83013086bd3e436, type: 3}
 --- !u!114 &180846493 stripped
@@ -1073,7 +1073,7 @@ PrefabInstance:
     - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
         type: 3}
       propertyPath: damageRechargeTime
-      value: 1
+      value: 1.15
       objectReference: {fileID: 0}
     - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
         type: 3}
@@ -2267,8 +2267,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tortoisePrefab: {fileID: 3679714958970661110, guid: 6045c7eeb8f836c49b79964c2f216afd,
     type: 3}
-  spawnRate: 1.5
-  maxTortoiseInScene: 5
+  spawnRate: 1.6
+  maxTortoiseInScene: 7
 --- !u!4 &1913089808
 Transform:
   m_ObjectHideFlags: 0

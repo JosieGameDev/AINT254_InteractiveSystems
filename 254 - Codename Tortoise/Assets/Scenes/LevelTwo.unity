@@ -315,7 +315,7 @@ PrefabInstance:
     - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
         type: 3}
       propertyPath: damageRechargeTime
-      value: 1.2
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
         type: 3}
@@ -2182,6 +2182,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: GameMan
       objectReference: {fileID: 0}
+    - target: {fileID: -6475721260284167528, guid: 37cde49bb8ab18d4b83013086bd3e436,
+        type: 3}
+      propertyPath: thisLevelRef
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6475721260284167528, guid: 37cde49bb8ab18d4b83013086bd3e436,
+        type: 3}
+      propertyPath: GlobObj
+      value: 
+      objectReference: {fileID: 1250467428}
     - target: {fileID: 6360314388171032424, guid: 37cde49bb8ab18d4b83013086bd3e436,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2237,16 +2247,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6475721260284167528, guid: 37cde49bb8ab18d4b83013086bd3e436,
-        type: 3}
-      propertyPath: thisLevelRef
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -6475721260284167528, guid: 37cde49bb8ab18d4b83013086bd3e436,
-        type: 3}
-      propertyPath: GlobObj
-      value: 
-      objectReference: {fileID: 1250467428}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37cde49bb8ab18d4b83013086bd3e436, type: 3}
 --- !u!1 &2086494971

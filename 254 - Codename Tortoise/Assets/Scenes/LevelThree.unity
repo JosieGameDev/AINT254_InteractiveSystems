@@ -1091,7 +1091,7 @@ Camera:
   far clip plane: 1000
   field of view: 4.5
   orthographic: 0
-  orthographic size: 2.19375
+  orthographic size: 2.017857
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1137,6 +1137,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: GameMan
+      objectReference: {fileID: 0}
+    - target: {fileID: -6475721260284167528, guid: 37cde49bb8ab18d4b83013086bd3e436,
+        type: 3}
+      propertyPath: thisLevelRef
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6360314388171032424, guid: 37cde49bb8ab18d4b83013086bd3e436,
         type: 3}
@@ -1192,11 +1197,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -6475721260284167528, guid: 37cde49bb8ab18d4b83013086bd3e436,
-        type: 3}
-      propertyPath: thisLevelRef
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37cde49bb8ab18d4b83013086bd3e436, type: 3}
@@ -2000,6 +2000,11 @@ PrefabInstance:
         type: 3}
       propertyPath: level
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8066734615895084025, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
+        type: 3}
+      propertyPath: damageRechargeTime
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8066734615895084026, guid: 1e58a5c2e791ed44c911dbeb44e8b20e,
         type: 3}
